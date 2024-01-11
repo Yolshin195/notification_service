@@ -1,0 +1,29 @@
+[
+  {
+    "model": "notification.messagestatusreference",
+    "pk": "1c998d70-fe14-4c0f-baac-1fe18305576e",
+    "fields": {
+      "code": "created",
+      "name": "CREATED",
+      "description": "Description for CREATED"
+    }
+  },
+  {
+    "model": "notification.messagestatusreference",
+    "pk": "df5b40b5-0f9e-4b14-9c05-4ff9f41e8cff",
+    "fields": {
+      "code": "completed",
+      "name": "COMPLETED",
+      "description": "Description for COMPLETED"
+    }
+  },
+  {
+    "model": "notification.messagestatusreference",
+    "pk": "067caaf9-93b7-4282-9ef5-04bb0848a957",
+    "fields": {
+      "code": "error",
+      "name": "ERROR",
+      "description": "Description for ERROR"
+    }
+  }
+]

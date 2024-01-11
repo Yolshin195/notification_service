@@ -1,0 +1,38 @@
+[
+  {
+    "model": "notification.mobileoperatorcodereference",
+    "pk": "6e62be92-8fdc-44bb-9caf-4bb74e44f893",
+    "fields": {
+      "code": "911",
+      "name": "МТС-911",
+      "description": "MTC-911 Северо-Западный ФО"
+    }
+  },
+  {
+    "model": "notification.mobileoperatorcodereference",
+    "pk": "85ce9a1f-0ea8-49a3-8e58-df87c4db640f",
+    "fields": {
+      "code": "983",
+      "name": "МТС-983",
+      "description": "MTC-983 Сибирский ФО"
+    }
+  },
+  {
+    "model": "notification.mobileoperatorcodereference",
+    "pk": "761d9568-6ad7-4fd5-bb99-d9f0834fd244",
+    "fields": {
+      "code": "961",
+      "name": "Билайн-961",
+      "description": "Билайн-961 кроме Северо-Западного ФО"
+    }
+  },
+  {
+    "model": "notification.mobileoperatorcodereference",
+    "pk": "da709570-096f-4c68-824f-8af48c9b87e0",
+    "fields": {
+      "code": "934",
+      "name": "МегаФон-934",
+      "description": "МегаФон-983 Дальневосточный ФО"
+    }
+  }
+]

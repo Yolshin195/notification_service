@@ -1,0 +1,110 @@
+[
+  {
+    "model": "notification.tagreference",
+    "pk": "53f619c7-6eb4-4967-924e-59cd91cfd0f4",
+    "fields": {
+      "code": "python",
+      "name": "Python",
+      "description": "Clients who write in Python"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "13741826-09df-468a-9c57-94742cb91752",
+    "fields": {
+      "code": "javascript",
+      "name": "JavaScript",
+      "description": "Clients who write in JavaScript"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "e7fac242-5b4e-44f3-add3-9f4c0668d698",
+    "fields": {
+      "code": "java",
+      "name": "Java",
+      "description": "Clients who write in Java"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "fdbc6624-52f5-4724-ad1e-4c097aa170e7",
+    "fields": {
+      "code": "csharp",
+      "name": "C#",
+      "description": "Clients who write in C#"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "68025e41-f371-42ef-8abe-cef8fc1071aa",
+    "fields": {
+      "code": "php",
+      "name": "PHP",
+      "description": "Clients who write in PHP"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "8af8b985-af3b-4f7f-a671-21b463e15c50",
+    "fields": {
+      "code": "typescript",
+      "name": "TypeScript",
+      "description": "Clients who write in TypeScript"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "ecf3c8ef-7a09-4f53-bb60-f36f62ec71c9",
+    "fields": {
+      "code": "c",
+      "name": "C",
+      "description": "Clients who write in C"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "b1fc06c6-72c5-446f-a453-599832f5a94e",
+    "fields": {
+      "code": "ruby",
+      "name": "Ruby",
+      "description": "Clients who write in Ruby"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "340381df-1b17-47e4-b827-65a580526021",
+    "fields": {
+      "code": "swift",
+      "name": "Swift",
+      "description": "Clients who write in Swift"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "c5739689-6faf-47f7-b892-ffe0c2d15ed3",
+    "fields": {
+      "code": "go",
+      "name": "Go",
+      "description": "Clients who write in Go"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "675a000e-7444-4426-b363-ced1686b350b",
+    "fields": {
+      "code": "c++",
+      "name": "C++",
+      "description": "Clients who write in C++"
+    }
+  },
+  {
+    "model": "notification.tagreference",
+    "pk": "dc395170-b1f1-4280-a240-116ac859a2e2",
+    "fields": {
+      "code": "erlang",
+      "name": "Erlang",
+      "description": "Clients who write in Erlang"
+    }
+  }
+]
