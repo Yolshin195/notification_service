@@ -2,6 +2,7 @@ from datetime import datetime
 from uuid import UUID
 from celery import shared_task
 
+from notification.message_sender_api import message_sender_api
 from notification.models import Dispatch, MessageStatusReference, MessageStatusEnum, Client, Message
 
 
@@ -28,7 +29,8 @@ def task_send_message(message_id: UUID):
         print("Ещё рано отправлять сообщение!!!")
         return
 
-    print("Сообщение отправлено!!!")
+    if message_sender_api(message.id.int, int(message.client.phone_number), message.dispatch.message_text):
+        print("Сообщение отправлено!!!")
 
     message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.COMPLETED.value)
     message.save()
