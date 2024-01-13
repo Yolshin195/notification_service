@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'notification_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dictionary_db',
+        'NAME': 'notification_service_db',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'db',

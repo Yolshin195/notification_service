@@ -26,11 +26,11 @@ services:
     depends_on:
       - redis
       - db
-    command: celery -A dictionary worker -l INFO --pool=solo
+    command: celery -A notification_service worker -l INFO --pool=solo
 
   redis:
     image: "redis:alpine"
-    container_name: redis_server
+    container_name: notification_redis_server
     ports:
       - "6379:6379"
 

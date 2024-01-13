@@ -8,8 +8,10 @@ from notification.models import Dispatch, MessageStatusReference, MessageStatusE
 @shared_task
 def task_create_messages(dispatch_id: UUID):
     dispatch = Dispatch.objects.get(id=dispatch_id)
-    status = MessageStatusReference.objects.get(code=MessageStatusEnum.CREATED)
-    for client in Client.objects.filter(dispatch.filter_tag, dispatch.filter_mobile_operator_code):
+    status = MessageStatusReference.objects.get(code=MessageStatusEnum.CREATED.value)
+    clients = Client.objects.filter(tag__id=dispatch.filter_tag.id,
+                                    mobile_operator_code__id=dispatch.filter_mobile_operator_code.id)
+    for client in clients:
         message = Message.objects.create(client=client, dispatch=dispatch, status=status)
         task_send_message.apply_async(args=[message.id])
 
