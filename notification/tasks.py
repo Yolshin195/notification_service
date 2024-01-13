@@ -21,12 +21,14 @@ def task_send_message(message_id: UUID):
     message = Message.objects.get(id=message_id)
     if message.status.code == MessageStatusEnum.COMPLETED.value:
         return
-    if message.dispatch.end_datetime < datetime.now():
+    if message.dispatch.end_datetime.astimezone(message.client.timezone) < datetime.now(message.client.timezone):
+        print("Уже поздно отправлять сообщение!!!")
         return
-    if message.dispatch.start_datetime > datetime.now():
+    if message.dispatch.start_datetime.astimezone(message.client.timezone) > datetime.now(message.client.timezone):
+        print("Ещё рано отправлять сообщение!!!")
         return
 
     print("Сообщение отправлено!!!")
 
-    message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.COMPLETED)
+    message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.COMPLETED.value)
     message.save()

@@ -2,6 +2,7 @@ import uuid
 from enum import Enum
 
 from django.db import models
+from timezone_field import TimeZoneField
 
 
 class MessageStatusEnum(Enum):
@@ -48,7 +49,7 @@ class Client(BaseEntity):
     phone_number = models.CharField(max_length=11, unique=True)
     mobile_operator_code = models.ForeignKey(MobileOperatorCodeReference, on_delete=models.CASCADE)
     tag = models.ForeignKey(TagReference, on_delete=models.CASCADE)
-    timezone = models.CharField(max_length=255)
+    timezone = TimeZoneField(choices_display="WITH_GMT_OFFSET")
 
     def __str__(self):
         return f"{self.__class__.__name__} - {self.phone_number}"

@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from .utils import TimeZoneSerializerChoiceField
 from .models import (
     Client, Dispatch, Message,
     MobileOperatorCodeReference, MessageStatusReference, TagReference
@@ -24,6 +25,8 @@ class TagReferenceSerializer(serializers.ModelSerializer):
 
 
 class ClientSerializer(serializers.ModelSerializer):
+    timezone = TimeZoneSerializerChoiceField()
+
     class Meta:
         model = Client
         fields = '__all__'
