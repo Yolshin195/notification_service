@@ -1,7 +1,31 @@
 # Notification service
-[Link to task](https://vans-tan-09u.craft.me/n6OVYFVUpq0o6L)
+
+[Link to task (ru)](https://vans-tan-09u.craft.me/n6OVYFVUpq0o6L)
+
+## ToDo
+
+### Client entity
+
+- [X] GET: View created clients
+- [X] POST: Adding a new client with all of its attributes
+- [ ] PUT: Client attribute updates
+- [ ] DELETE: Delete a client
+
+### Dispatch entity
+
+- [X] GET: View created mailings
+- [X] POST: Adding a new newsletter
+- [ ] PUT: Mailing attribute updates
+- [ ] DELETE: Delete a mailing
+- [ ] Processing active mailings and sending messages to clients
+
+### Report
+
+- [ ] GET: Getting overall statistics on created mailings and the number of messages sent, grouped by their statuses
+- [ ] GET: Obtaining detailed statistics of sent messages for a specific mailing
 
 ## Load data
+
 ```commandline
 python manage.py loaddata notification/message_status_reference.json
 python manage.py loaddata notification/tag_reference.json
@@ -9,19 +33,15 @@ python manage.py loaddata notification/mobile_operator_code_reference.json
 ```
 
 ## docker compose
+
 ```commandline
 docker-compose build
 docker-compose up -d
+docker-compose run web python manage.py createsuperuser
 ```
 
 ## open terminal Django
+
 ```commandline
 docker exec -it notification_service bash
 ```
-
-## Рассылка сообщений
-1. Пользователь создаёт сущность Dispatch
-2. Срабатывает django сигнал, который запускает celery задачу
-3. Celery задача создаёт сообщения для каждого пользователя который попал под фильтр
-4. Создаём задачу для каждого сообщения на отправку
-5. В момент отправки проверяем, что время на отправку ещё не закончилось
