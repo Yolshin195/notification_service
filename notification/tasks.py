@@ -1,9 +1,12 @@
+from logging import getLogger
 from datetime import datetime
 from uuid import UUID
 from celery import shared_task
 
 from notification.message_sender_api import message_sender_api
 from notification.models import Dispatch, MessageStatusReference, MessageStatusEnum, Client, Message
+
+logger = getLogger(__name__)
 
 
 @shared_task
@@ -23,14 +26,13 @@ def task_send_message(message_id: UUID):
     if message.status.code == MessageStatusEnum.COMPLETED.value:
         return
     if message.dispatch.end_datetime.astimezone(message.client.timezone) < datetime.now(message.client.timezone):
-        print("Уже поздно отправлять сообщение!!!")
+        logger.info("Уже поздно отправлять сообщение!!!")
         return
     if message.dispatch.start_datetime.astimezone(message.client.timezone) > datetime.now(message.client.timezone):
-        print("Ещё рано отправлять сообщение!!!")
+        logger.info("Ещё рано отправлять сообщение!!!")
         return
 
     if message_sender_api(message.id.int, int(message.client.phone_number), message.dispatch.message_text):
-        print("Сообщение отправлено!!!")
-
-    message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.COMPLETED.value)
-    message.save()
+        logger.info("Сообщение отправлено!!!")
+        message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.COMPLETED.value)
+        message.save()

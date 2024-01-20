@@ -11,4 +11,4 @@ logger = logging.getLogger(__name__)
 
 @receiver(post_save, sender=Dispatch)
 def dispatch_pre_save(sender, instance, **kwargs):
-    task_create_messages.apply_async(args=[instance.id])
+    task_create_messages.apply_async(args=[instance.id], eta=instance.start_datetime)

@@ -1,9 +1,8 @@
+import os
 from typing import TypedDict, Unpack
 from urllib import request, error
 from logging import getLogger
 import json
-
-from django.conf import settings
 
 logger = getLogger(__name__)
 
@@ -41,7 +40,8 @@ class MessageSenderApi:
             return False
 
 
-message_sender_api = MessageSenderApi(path=settings.MESSAGE_SENDER_API_PATH, token=settings.MESSAGE_SENDER_API_TOKEN)
+message_sender_api = MessageSenderApi(path=os.getenv('MESSAGE_SENDER_API_PATH'),
+                                      token=os.getenv('MESSAGE_SENDER_API_TOKEN'))
 
 if __name__ == "__main__":
     r = message_sender_api(id=1, phone=79834567233, text='Test')
