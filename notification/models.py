@@ -64,6 +64,7 @@ class Dispatch(BaseEntity):
 
 
 class Message(BaseEntity):
+    message_id = models.IntegerField(unique=True, editable=False)
     creation_datetime = models.DateTimeField(auto_now_add=True)
     status = models.ForeignKey(MessageStatusReference, on_delete=models.CASCADE)
     dispatch = models.ForeignKey(Dispatch, on_delete=models.CASCADE)

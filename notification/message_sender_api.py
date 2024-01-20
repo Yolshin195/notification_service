@@ -6,6 +6,9 @@ import json
 
 logger = getLogger(__name__)
 
+MESSAGE_SENDER_API_PATH = os.getenv('MESSAGE_SENDER_API_PATH')
+MESSAGE_SENDER_API_TOKEN = os.getenv('MESSAGE_SENDER_API_TOKEN')
+
 
 class Message(TypedDict):
     id: int
@@ -31,7 +34,7 @@ class MessageSenderApi:
             req = request.Request(self.get_url(body['id']), data=data, headers=self.headers, method=self.method)
             with request.urlopen(req) as response:
                 response_data = json.loads(response.read().decode('utf-8'))
-                return True if response_data.get('message') == 'OK' else False
+                return response_data.get('message') == 'OK'
         except error.URLError as e:
             logger.error(f"Request failed: {e}")
             return False
@@ -40,9 +43,8 @@ class MessageSenderApi:
             return False
 
 
-message_sender_api = MessageSenderApi(path=os.getenv('MESSAGE_SENDER_API_PATH'),
-                                      token=os.getenv('MESSAGE_SENDER_API_TOKEN'))
+message_sender_api = MessageSenderApi(path=MESSAGE_SENDER_API_PATH, token=MESSAGE_SENDER_API_TOKEN)
 
 if __name__ == "__main__":
     r = message_sender_api(id=1, phone=79834567233, text='Test')
-    print(r)
+    logger.warning(r)

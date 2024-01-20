@@ -32,7 +32,12 @@ def task_send_message(message_id: UUID):
         logger.info("Ещё рано отправлять сообщение!!!")
         return
 
-    if message_sender_api(message.id.int, int(message.client.phone_number), message.dispatch.message_text):
+    if message_sender_api(id=message.message_id,
+                          phone=int(message.client.phone_number),
+                          text=message.dispatch.message_text):
         logger.info("Сообщение отправлено!!!")
         message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.COMPLETED.value)
+        message.save()
+    else:
+        message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.ERROR.value)
         message.save()

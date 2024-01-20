@@ -1,5 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from .models import (
     Client, Dispatch, Message,
     MobileOperatorCodeReference, MessageStatusReference, TagReference
@@ -44,3 +46,8 @@ class DispatchViewSet(viewsets.ModelViewSet):
 class MessageViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all().order_by('id')
     serializer_class = MessageSerializer
+
+
+class DispatchReportApiView(APIView):
+    def get(self, request, format=None):
+        return Response({'test': 'success!'})
