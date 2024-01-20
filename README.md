@@ -1,6 +1,6 @@
 # Notification service
 
-[Link to task (ru)](https://vans-tan-09u.craft.me/n6OVYFVUpq0o6L)
+[Link to task (ru)](https://vans-tan-09u.craft.me/n6OVYFVUpq0o6L),
 [Русский](docs/ru/README.md)
 
 ## ToDo
