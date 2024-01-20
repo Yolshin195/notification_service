@@ -1,7 +1,7 @@
 # Сервис уведомлений
 
 [Link to task (ru)](https://vans-tan-09u.craft.me/n6OVYFVUpq0o6L)
-[English](README.md)
+[English](/README.md)
 
 ## Сделать
 
