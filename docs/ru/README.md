@@ -1,7 +1,7 @@
 # Сервис уведомлений
 
-[Link to task (ru)](https://vans-tan-09u.craft.me/n6OVYFVUpq0o6L)
-[English](https://github.com/Yolshin195/notification_service/tree/main)
+[Link to task (ru)](https://vans-tan-09u.craft.me/n6OVYFVUpq0o6L),
+[English](https://github.com/Yolshin195/notification_service)
 
 ## Сделать
 
