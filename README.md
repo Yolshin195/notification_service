@@ -33,7 +33,7 @@ python manage.py loaddata notification/tag_reference.json
 python manage.py loaddata notification/mobile_operator_code_reference.json
 ```
 
-## docker compose
+## Docker compose
 
 ```commandline
 docker-compose build
@@ -41,7 +41,7 @@ docker-compose up -d
 docker-compose run web python manage.py createsuperuser
 ```
 
-## open terminal Django
+## Open terminal Django
 
 ```commandline
 docker exec -it notification_service bash
