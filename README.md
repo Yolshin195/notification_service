@@ -9,9 +9,7 @@ It is necessary to develop a service for managing API administration and receivi
 ### Description
 
 - Implement methods for creating a new mailing, viewing created ones, and obtaining statistics for completed mailings.
-
 - Implement the notification sending service to an external API.
-
 - Optionally, you can choose any number of additional points described after the main ones.
 
 ## ToDo
