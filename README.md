@@ -9,21 +9,26 @@
 
 - [X] GET: View created clients
 - [X] POST: Adding a new client with all of its attributes
-- [ ] PUT: Client attribute updates
-- [ ] DELETE: Delete a client
+- [X] PUT: Client attribute updates
+- [X] DELETE: Delete a client
 
 ### Dispatch entity
 
 - [X] GET: View created mailings
 - [X] POST: Adding a new newsletter
-- [ ] PUT: Mailing attribute updates
-- [ ] DELETE: Delete a mailing
+- [X] PUT: Mailing attribute updates
+- [X] DELETE: Delete a mailing
 - [ ] Processing active mailings and sending messages to clients
 
 ### Report
 
 - [ ] GET: Getting overall statistics on created mailings and the number of messages sent, grouped by their statuses
-- [ ] GET: Obtaining detailed statistics of sent messages for a specific mailing
+- [X] GET: Obtaining detailed statistics of sent messages for a specific mailing
+
+### Additional tasks
+
+- 3 Prepare a docker-compose file to launch all project services with a single command.
+- 5 Configure it so that the Swagger UI page opens at the /docs/ address, displaying the documentation for the developed API.
 
 ## Load data
 
