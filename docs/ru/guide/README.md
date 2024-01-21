@@ -14,5 +14,6 @@
 ```
 
 ## Инструкции
-- Создание новой рассылки [http://localhost:8000/api/v1/dispatches/](create_dispatches.md)
-- Получение статистики по созданным рассылкам и количеству отправленных [http://localhost:8000/api/v1/dispatch-reports/](get_despatches_report.md)
+- Создание новой рассылки: [http://localhost:8000/api/v1/dispatches/](create_dispatches.md)
+- Получение статистики по созданным рассылкам и количеству отправленных: [http://localhost:8000/api/v1/dispatch-reports/](get_despatches_report.md)
+- Swagger: [http://localhost:8000/docs/](http://localhost:8000/docs/)
