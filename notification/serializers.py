@@ -1,3 +1,4 @@
+from django.core.validators import RegexValidator
 from rest_framework import serializers
 from .utils import TimeZoneSerializerChoiceField
 from .models import (
@@ -30,6 +31,14 @@ class TagReferenceSerializer(serializers.ModelSerializer):
 
 class ClientSerializer(serializers.ModelSerializer):
     timezone = TimeZoneSerializerChoiceField()
+    phone_number = serializers.CharField(
+        validators=[
+            RegexValidator(
+                regex=r'^7\d{10}$',
+                message='Неверный формат номера телефона. Используйте формат 7XXXXXXXXXX.'
+            )
+        ]
+    )
 
     class Meta:
         model = Client
