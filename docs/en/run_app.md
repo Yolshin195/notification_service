@@ -55,5 +55,3 @@ docker-compose down
 ```
 
 This will stop all containers and free up resources.
-
----

@@ -14,6 +14,8 @@
 ## Документация
 
 - [Как запустить проект?](run_app.md)
+- [Описание реализованных методов в формате OpenAPI](http://localhost:8000/docs/)
+- [Документация по API для интеграции с разработанным сервисом](guide/README.md)
 
 ## Сделать
 
@@ -56,5 +58,3 @@ docker-compose run web python manage.py createsuperuser
 ```commandline
 docker exec -it notification_service bash
 ```
-
----

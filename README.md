@@ -15,6 +15,9 @@ It is necessary to develop a service for managing API administration and receivi
 ## Documentation
 
 - [How to run the project?](docs/en/run_app.md)
+- [Swagger](http://localhost:8000/docs/)
+- [API documentation for integration](docs/ru/guide/README.md)
+
 
 ## ToDo
 
