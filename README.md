@@ -1,7 +1,18 @@
 # Notification service
+Read this in other languages: [Русский](docs/ru/README.md)
 
-[Link to task (ru)](https://vans-tan-09u.craft.me/n6OVYFVUpq0o6L),
-[Русский](docs/ru/README.md)
+## Task
+
+It is necessary to develop a service for managing API administration and receiving statistics for mailings.
+[Link to this task](https://vans-tan-09u.craft.me/n6OVYFVUpq0o6L).
+
+### Description
+
+- Implement methods for creating a new mailing, viewing created ones, and obtaining statistics for completed mailings.
+
+- Implement the notification sending service to an external API.
+
+- Optionally, you can choose any number of additional points described after the main ones.
 
 ## ToDo
 
@@ -30,14 +41,6 @@
 - [X] 3\. Prepare a docker-compose file to launch all project services with a single command.
 - [X] 5\. Configure it so that the Swagger UI page opens at the /docs/ address, displaying the documentation for the developed API.
 
-## Load data
-
-```commandline
-python manage.py loaddata notification/message_status_reference.json
-python manage.py loaddata notification/tag_reference.json
-python manage.py loaddata notification/mobile_operator_code_reference.json
-```
-
 ## Docker compose
 
 ```commandline
@@ -51,15 +54,3 @@ docker-compose run web python manage.py createsuperuser
 ```commandline
 docker exec -it notification_service bash
 ```
-
-## ToDo
-- [ ] Readme сделать на Русском
-- [ ] Удалить: Load data
-- [ ] Настроить logger в папка docker
-- [ ] Написать тесты
-- [ ] Посмотреть как правильно регистрировать signal def ready(self): import notification.signals
-- [ ] flake8 - настроить
-- [ ] Распилить api
-- [ ] генерация id
-- [ ] Сделать пометку, что время нужно указывать в UTC
-- [ ] Рассылка добавить поле Timezone

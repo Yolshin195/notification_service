@@ -29,25 +29,30 @@ class MessageSenderApi:
         }
         self.method = "POST"
 
-    def get_url(self, message_id: int):
-        return f"{self.path}/{message_id}"
-
     def __call__(self, **body: Unpack[Message]):
+        req = self.build_request(body)
+        response = self.send_request(req)
+        if response.get("message") != "OK":
+            raise MessageSenderApiException("Response: Not equal to 'OK'")
+
+    def build_request(self, body: Message):
+        url = f"{self.path}/{body["id"]}"
+        data = json.dumps(body).encode("utf-8")
+        return request.Request(
+            url,
+            data=data,
+            headers=self.headers,
+            method=self.method,
+        )
+
+    @staticmethod
+    def send_request(req):
+        logger.info(f"Sending request to {req.full_url} with data: {req.data}")
         try:
-            data = json.dumps(body).encode("utf-8")
-            url = self.get_url(body["id"])
-            req = request.Request(
-                url,
-                data=data,
-                headers=self.headers,
-                method=self.method,
-            )
-            logger.info(f"Sending request to {url} with data: {data}")
             with request.urlopen(req) as response:
                 response_data = json.loads(response.read().decode("utf-8"))
                 logger.debug(f"Received response: {response_data}")
-                if response_data.get("message") != "OK":
-                    raise MessageSenderApiException("Response: Not equal to 'OK'")
+                return response_data
         except error.URLError as url_error:
             message = f"Request failed: {url_error}"
             logger.error(message)

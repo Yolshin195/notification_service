@@ -43,6 +43,8 @@ class MessageSerializer(serializers.ModelSerializer):
 
 
 class DispatchSerializer(serializers.ModelSerializer):
+    timezone = TimeZoneSerializerChoiceField()
+
     class Meta:
         model = Dispatch
         fields = "__all__"

@@ -59,6 +59,7 @@ class Client(BaseEntity):
 
 
 class Dispatch(BaseEntity):
+    timezone = TimeZoneField(choices_display="WITH_GMT_OFFSET", default='Etc/UTC')
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField()
     message_text = models.TextField()
