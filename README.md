@@ -12,6 +12,10 @@ It is necessary to develop a service for managing API administration and receivi
 - Implement the notification sending service to an external API.
 - Optionally, you can choose any number of additional points described after the main ones.
 
+## Documentation
+
+- [How to run the project?](docs/en/run_app.md)
+
 ## ToDo
 
 ### Client entity

@@ -11,6 +11,10 @@
 - Реализовать сам сервис отправки уведомлений на внешнее API.
 - Опционально вы можете выбрать любое количество дополнительных пунктов описанных после основного.
 
+## Документация
+
+- [Как запустить проект?](run_app.md)
+
 ## Сделать
 
 ### Таблица клиента (Client)
@@ -52,3 +56,5 @@ docker-compose run web python manage.py createsuperuser
 ```commandline
 docker exec -it notification_service bash
 ```
+
+---
