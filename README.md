@@ -18,7 +18,7 @@
 - [X] POST: Adding a new newsletter
 - [X] PUT: Mailing attribute updates
 - [X] DELETE: Delete a mailing
-- [ ] Processing active mailings and sending messages to clients
+- [X] Processing active mailings and sending messages to clients
 
 ### Report
 
