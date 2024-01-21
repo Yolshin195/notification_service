@@ -42,3 +42,15 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = '__all__'
+
+
+class DispatchReportSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    start_datetime = serializers.DateTimeField()
+    end_datetime = serializers.DateTimeField()
+    message_text = serializers.CharField()
+    filter_mobile_operator_code__code = serializers.CharField()
+    filter_tag__code = serializers.CharField()
+    created = serializers.IntegerField()
+    completed = serializers.IntegerField()
+    error = serializers.IntegerField()

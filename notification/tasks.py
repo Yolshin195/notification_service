@@ -31,7 +31,6 @@ def task_send_message(message_id: UUID):
     if message.dispatch.start_datetime.astimezone(message.client.timezone) > datetime.now(message.client.timezone):
         logger.info("Ещё рано отправлять сообщение!!!")
         return
-
     if message_sender_api(id=message.message_id,
                           phone=int(message.client.phone_number),
                           text=message.dispatch.message_text):

@@ -7,10 +7,11 @@ from .views import (
     MobileOperatorCodeReferenceViewSet,
     MessageStatusReferenceViewSet,
     TagReferenceViewSet,
-    DispatchReportApiView
+    DispatchReportViewSet
 )
 
 router = DefaultRouter()
+router.register(r'dispatch-reports', DispatchReportViewSet, basename='dispatch-reports')
 router.register(r'clients', ClientViewSet)
 router.register(r'dispatches', DispatchViewSet)
 router.register(r'messages', MessageViewSet)
@@ -19,6 +20,5 @@ router.register(r'message-statuses', MessageStatusReferenceViewSet)
 router.register(r'tags', TagReferenceViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('report', DispatchReportApiView.as_view())
+    path('', include(router.urls))
 ]
