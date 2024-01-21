@@ -12,8 +12,12 @@ logger = logging.getLogger(__name__)
 
 @receiver(post_save, sender=Dispatch)
 def dispatch_post_save(sender, instance, **kwargs):
-    logger.warning(f'datetime start: {instance.start_datetime.astimezone(UTC)}, datetime now: {datetime.now(UTC)}')
-    task_create_messages.apply_async(args=[instance.id], eta=instance.start_datetime.astimezone(UTC))
+    logger.warning(
+        f"datetime start: {instance.start_datetime.astimezone(UTC)}, datetime now: {datetime.now(UTC)}"
+    )
+    task_create_messages.apply_async(
+        args=[instance.id], eta=instance.start_datetime.astimezone(UTC)
+    )
 
 
 @receiver(pre_save, sender=Message)

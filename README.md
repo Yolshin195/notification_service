@@ -22,7 +22,7 @@
 
 ### Report
 
-- [ ] GET: Getting overall statistics on created mailings and the number of messages sent, grouped by their statuses
+- [X] GET: Getting overall statistics on created mailings and the number of messages sent, grouped by their statuses
 - [X] GET: Obtaining detailed statistics of sent messages for a specific mailing
 
 ### Additional tasks
@@ -51,3 +51,15 @@ docker-compose run web python manage.py createsuperuser
 ```commandline
 docker exec -it notification_service bash
 ```
+
+## ToDo
+- [ ] Readme сделать на Русском
+- [ ] Удалить: Load data
+- [ ] Настроить logger в папка docker
+- [ ] Написать тесты
+- [ ] Посмотреть как правильно регистрировать signal def ready(self): import notification.signals
+- [ ] flake8 - настроить
+- [ ] Распилить api
+- [ ] генерация id
+- [ ] Сделать пометку, что время нужно указывать в UTC
+- [ ] Рассылка добавить поле Timezone

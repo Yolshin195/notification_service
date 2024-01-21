@@ -48,7 +48,9 @@ class MobileOperatorCodeReference(BaseReference):
 
 class Client(BaseEntity):
     phone_number = models.CharField(max_length=11, unique=True)
-    mobile_operator_code = models.ForeignKey(MobileOperatorCodeReference, on_delete=models.CASCADE)
+    mobile_operator_code = models.ForeignKey(
+        MobileOperatorCodeReference, on_delete=models.CASCADE
+    )
     tag = models.ForeignKey(TagReference, on_delete=models.CASCADE)
     timezone = TimeZoneField(choices_display="WITH_GMT_OFFSET")
 
@@ -60,7 +62,9 @@ class Dispatch(BaseEntity):
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField()
     message_text = models.TextField()
-    filter_mobile_operator_code = models.ForeignKey(MobileOperatorCodeReference, on_delete=models.CASCADE)
+    filter_mobile_operator_code = models.ForeignKey(
+        MobileOperatorCodeReference, on_delete=models.CASCADE
+    )
     filter_tag = models.ForeignKey(TagReference, on_delete=models.CASCADE)
 
 

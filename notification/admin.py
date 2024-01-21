@@ -1,7 +1,11 @@
 from django.contrib import admin
 from .models import (
-    Client, Dispatch, Message,
-    MobileOperatorCodeReference, MessageStatusReference, TagReference
+    Client,
+    Dispatch,
+    Message,
+    MobileOperatorCodeReference,
+    MessageStatusReference,
+    TagReference,
 )
 
 admin.site.register(Client)

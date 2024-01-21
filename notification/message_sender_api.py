@@ -48,12 +48,12 @@ class MessageSenderApi:
                 logger.debug(f"Received response: {response_data}")
                 if response_data.get("message") != "OK":
                     raise MessageSenderApiException("Response: Not equal to 'OK'")
-        except error.URLError as e:
-            message = f"Request failed: {e}"
+        except error.URLError as url_error:
+            message = f"Request failed: {url_error}"
             logger.error(message)
             raise MessageSenderApiException(message)
-        except json.JSONDecodeError as e:
-            message = f"Failed to parse JSON response: {e}"
+        except json.JSONDecodeError as json_decode_error:
+            message = f"Failed to parse JSON response: {json_decode_error}"
             logger.error(message)
             raise MessageSenderApiException(message)
 
@@ -66,5 +66,5 @@ if __name__ == "__main__":
     try:
         result = message_sender_api(id=1, phone=79834567233, text="Test")
         logger.info(f"API call result: {result}")
-    except MessageSenderApiException as e:
-        logger.error(f"MessageSenderApiException: {e}")
+    except MessageSenderApiException as api_exception:
+        logger.error(f"MessageSenderApiException: {api_exception}")
