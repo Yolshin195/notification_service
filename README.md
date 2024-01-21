@@ -27,8 +27,8 @@
 
 ### Additional tasks
 
-- 3 Prepare a docker-compose file to launch all project services with a single command.
-- 5 Configure it so that the Swagger UI page opens at the /docs/ address, displaying the documentation for the developed API.
+- [X] 3\. Prepare a docker-compose file to launch all project services with a single command.
+- [X] 5\. Configure it so that the Swagger UI page opens at the /docs/ address, displaying the documentation for the developed API.
 
 ## Load data
 
