@@ -1,9 +1,9 @@
 from logging import getLogger
 from datetime import datetime
 from uuid import UUID
-from celery import shared_task
+from celery import shared_task, Task
 
-from notification.message_sender_api import message_sender_api
+from notification.message_sender_api import message_sender_api, MessageSenderApiException
 from notification.models import Dispatch, MessageStatusReference, MessageStatusEnum, Client, Message
 
 logger = getLogger(__name__)
@@ -20,23 +20,27 @@ def task_create_messages(dispatch_id: UUID):
         task_send_message.apply_async(args=[message.id])
 
 
-@shared_task
-def task_send_message(message_id: UUID):
+@shared_task(bind=True, max_retries=10)
+def task_send_message(self: Task, message_id: UUID):
     message = Message.objects.get(id=message_id)
     if message.status.code == MessageStatusEnum.COMPLETED.value:
+        logger.info("Сообщение уже отправлено")
         return
     if message.dispatch.end_datetime.astimezone(message.client.timezone) < datetime.now(message.client.timezone):
-        logger.info("Уже поздно отправлять сообщение!!!")
-        return
-    if message.dispatch.start_datetime.astimezone(message.client.timezone) > datetime.now(message.client.timezone):
-        logger.info("Ещё рано отправлять сообщение!!!")
-        return
-    if message_sender_api(id=message.message_id,
-                          phone=int(message.client.phone_number),
-                          text=message.dispatch.message_text):
-        logger.info("Сообщение отправлено!!!")
-        message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.COMPLETED.value)
+        logger.info("Уже поздно отправлять сообщение")
+        message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.TIMEOUT.value)
         message.save()
-    else:
+        return
+
+    try:
+        message_sender_api(id=message.message_id,
+                           phone=int(message.client.phone_number),
+                           text=message.dispatch.message_text)
+        logger.info("Сообщение отправлено!!!")
+    except MessageSenderApiException as exc:
         message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.ERROR.value)
         message.save()
+        raise self.retry(exc=exc, countdown=self.request.retries * 60)
+
+    message.status = MessageStatusReference.objects.get(code=MessageStatusEnum.COMPLETED.value)
+    message.save()

@@ -8,6 +8,7 @@ from timezone_field import TimeZoneField
 class MessageStatusEnum(Enum):
     CREATED = "created"
     COMPLETED = "completed"
+    TIMEOUT = "timeout"
     ERROR = "error"
 
 

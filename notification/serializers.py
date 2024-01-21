@@ -54,3 +54,4 @@ class DispatchReportSerializer(serializers.Serializer):
     created = serializers.IntegerField()
     completed = serializers.IntegerField()
     error = serializers.IntegerField()
+    timeout = serializers.IntegerField()

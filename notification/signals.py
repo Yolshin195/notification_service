@@ -1,3 +1,4 @@
+from datetime import datetime, UTC
 import logging
 
 from django.db.models.signals import post_save, pre_save
@@ -11,7 +12,8 @@ logger = logging.getLogger(__name__)
 
 @receiver(post_save, sender=Dispatch)
 def dispatch_post_save(sender, instance, **kwargs):
-    task_create_messages.apply_async(args=[instance.id], eta=instance.start_datetime)
+    logger.warning(f'datetime start: {instance.start_datetime.astimezone(UTC)}, datetime now: {datetime.now(UTC)}')
+    task_create_messages.apply_async(args=[instance.id], eta=instance.start_datetime.astimezone(UTC))
 
 
 @receiver(pre_save, sender=Message)

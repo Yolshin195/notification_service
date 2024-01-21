@@ -25,5 +25,14 @@
       "name": "ERROR",
       "description": "Description for ERROR"
     }
+  },
+  {
+    "model": "notification.messagestatusreference",
+    "pk": "f1a9759d-5a13-46dd-aa2d-3dc046280816",
+    "fields": {
+      "code": "timeout",
+      "name": "TIMEOUT",
+      "description": "Description for TIMEOUT"
+    }
   }
 ]

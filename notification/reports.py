@@ -16,7 +16,8 @@ def build_dispatch_report(dispatch_id: UUID):
     ).annotate(
         created=Count('message', filter=Q(message__status__code=MessageStatusEnum.CREATED.value)),
         completed=Count('message', filter=Q(message__status__code=MessageStatusEnum.COMPLETED.value)),
-        error=Count('message', filter=Q(message__status__code=MessageStatusEnum.ERROR.value))
+        error=Count('message', filter=Q(message__status__code=MessageStatusEnum.ERROR.value)),
+        timeout=Count('message', filter=Q(message__status__code=MessageStatusEnum.TIMEOUT.value))
     ).first()
 
 
@@ -31,5 +32,6 @@ def build_dispatch_reports():
     ).annotate(
         created=Count('message', filter=Q(message__status__code=MessageStatusEnum.CREATED.value)),
         completed=Count('message', filter=Q(message__status__code=MessageStatusEnum.COMPLETED.value)),
-        error=Count('message', filter=Q(message__status__code=MessageStatusEnum.ERROR.value))
+        error=Count('message', filter=Q(message__status__code=MessageStatusEnum.ERROR.value)),
+        timeout=Count('message', filter=Q(message__status__code=MessageStatusEnum.TIMEOUT.value))
     ).order_by('id')
