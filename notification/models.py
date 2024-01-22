@@ -59,7 +59,7 @@ class Client(BaseEntity):
 
 
 class Dispatch(BaseEntity):
-    timezone = TimeZoneField(choices_display="WITH_GMT_OFFSET", default='Etc/UTC')
+    timezone = TimeZoneField(choices_display="WITH_GMT_OFFSET", default="Etc/UTC")
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField()
     message_text = models.TextField()
@@ -69,8 +69,16 @@ class Dispatch(BaseEntity):
     filter_tag = models.ForeignKey(TagReference, on_delete=models.CASCADE)
 
 
+class MessageIdTable(models.Model):
+    id = models.AutoField(primary_key=True)
+
+    @classmethod
+    def get_next_id(cls) -> int:
+        return cls.objects.create().id
+
+
 class Message(BaseEntity):
-    message_id = models.IntegerField(unique=True, editable=False)
+    message_id = models.IntegerField(unique=True, editable=False, default=MessageIdTable.get_next_id)
     creation_datetime = models.DateTimeField(auto_now_add=True)
     status = models.ForeignKey(MessageStatusReference, on_delete=models.CASCADE)
     dispatch = models.ForeignKey(Dispatch, on_delete=models.CASCADE)
